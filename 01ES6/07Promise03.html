@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var promise1 = function (b_name) {
+        //프로미스 객체 생성
+        return new Promise(function (resolve, reject) {
+          $.ajax({
+            //요청URL
+            url: "http://nakja.co.kr/kosmoAPI/json/board_list_json.php",
+            //전송방식
+            type: "get",
+            //파라미터 : 게시판 구분을 위한 flag변수
+            //http://nakja.co.kr/kosmoAPI/json/board_list_json.php?tname=nboard_api
+            data: {
+              tname: b_name,
+            },
+            //콜백데이터의 형식(text, html, xml, script 등 여러가지 형식을 지정할 수 있다.)
+            dataType: "json",
+            //요청에 성공했을때 호출할 콜백함수
+            success: function (rData) {
+              //프로미스 객체가 이행상태가 되었을때 호출
+              resolve(rData);
+            },
+            //요청에 실패했을때 호출할 콜백함수
+            error: function (eData) {
+              //프로미스 객체가 거절상태가 되었을때 호출
+              reject(eData.status + ":" + eData.statusText);
+            },
+          });
+        });
+      };
+      var myPromise1 = function (b_name) {
+        promise1(b_name)
+          //요청 성공시 resolve()함수에 의해 then절이 실행된다.
+          .then(function (resData) {
+            console.log("호출1:성공시 then영역실행->", resData);
+          })
+          .catch(function (errData) {
+            //요청이 실패한 경우 reject()함수에 의해 catch절이 실행된다.
+            console.log("호출1:실패시 catch영역실행->", errData);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <h2>프로미스(Promise)</h2>
+    <input
+      type="button"
+      value="포트폴리오"
+      onclick="myPromise1('nboard_portfolio')"
+    />
+    <input type="button" value="API" onclick="myPromise1('nboard_api')" />
+    <input type="button" value="뉴스" onclick="myPromise1('nboard_news')" />
+    <input
+      type="button"
+      value="자바스크립트"
+      onclick="myPromise1('nboard_javascript')"
+    />
+  </body>
+</html>

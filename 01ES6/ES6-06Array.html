@@ -83,6 +83,27 @@
       }
       //--위에서 함수 선언시 매개변수를 따로 선언하지 않았지만 arguments를 사용해 받았다.
       fromFunction(98, 99, 100);
+
+      //기존의 배열을 복사한다.
+      let newArr2 = Array.from(arr);
+      console.log("newArr2", newArr2);
+
+      /*
+      concat()
+        : 일반적으로 2개의 문자열을 연결할때 사용하지만, 2개의 배열을
+        하나로 합쳐주는 역할도 한다.
+      */
+      console.error("concat() 사용하기");
+      var newArr3 = arr.concat([66, 77, 88]); // [1, 2, 3, 66, 77, 88]
+      console.log("newArr3", newArr3);
+
+      /*
+      Array.isArray()
+        : 인수로 전달받은 객체가 배열일때 true를 반환한다.
+      */
+      console.error("Array.isArray() 사용하기");
+      console.log(Array.isArray([21, 22, 23])); // true
+      console.log(Array.isArray({ f1: 21, f2: 22, f3: 23 })); // false
     </script>
   </body>
 </html>

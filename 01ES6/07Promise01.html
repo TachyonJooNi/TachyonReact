@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- https://jquery.com/ => download => https://code.jquery.com 혹은 Google CDN 등 사용 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script>
+      /*--
+      비동기통신(예:ajax)는 커피숍에서 주문을 받아서 처리되는데로 결과를 주는것과 같고
+        여기서 진동벨이 callback 함수와 같다.
+
+      함수를 매개변수로 전달해서 그걸 호출한다 => 함수형 인터페이스
+
+      ajax에서 배웠던 내용인것 같으니 같이 보면서 복습하자.
+      --*/
+      //2. 전달된 함수를 callBackFunc 매개변수가 받는다. 이를 통해 호출할 수 있다.
+      function myGetData(callBackFunc) {
+        //매개변수로 사용할 빈 객체
+        params = {};
+        //jQuery의 $.get()함수를 통해 비동기로 요청한다. (jQuery CDN 필요)
+        $.get("./myData.txt", params, function (resData) {
+          //요청에 성공하면 txt 파일의 모든 내용이 resData로 콜백된다.
+          callBackFunc(resData);
+        });
+      }
+      //1. 함수 호출시 인수로 또다른 함수를 전달한다.
+      myGetData(function (argData) {
+        console.error("프로미스 사용하기1");
+        console.log(argData);
+      });
+    </script>
+  </body>
+</html>

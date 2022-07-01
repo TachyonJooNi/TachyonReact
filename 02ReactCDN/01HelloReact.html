@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 리액트 -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <!-- 리액트 DOM -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- 바벨 : 최신자바스크립트를 구식 자바스크립트로 변환해주는 역할(즉, 구버전과의 호완성때문에 사용) -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      - 개발을 모듈 방식 또는 jQuery나 다른 라이브러리처럼 페이지 단위 방식으로도 개발 할 수 있다.
+      - 최근에는 모듈방식으로 개발을 많이 한다.
+      - 파이썬의 pip와 같이 NPM을 통해 모듈을 설치, 관리하고 최근에는 YARN을 사용하는 추세이다.
+
+      - 스크립트 태그가 DOM아래있는 경우가 많다. 이유는 이전처럼 <head>영역 즉 위에 쓴다면
+      - window.블라블라 처럼 로드가 끝나면 실행되는 문장 하나가 필요하기 때문에 그냥 인터프리터 방식
+      그대로 DOM아래 적어서 자연스럽게 읽히도록 만든다.(리액트, 뷰, 앵귤러 등 추세)
+      - CDN방식을 쓸때에는 자바스크립트 타입을 바벨로 지정해야한다. 
+      - class 가 리액트에서 말하는 컴포넌트이다. 
+      - 컴퍼넌트에는 클래스형과 함수형 컴퍼넌트가 있다.
+      - 리액트는 XML 문법을 따라가기 때문에 시작태그가 있으면 종료태그< ~~ />가 무조건 있어야한다. 
+      - 최근에는 함수형 컴퍼넌트가 많이 사용된다.
+      - 서블릿에서 처럼 생명주기 안에 render() 함수가 있어서 자동으로 호출된다고 말하는 것이다.
+      - JSX = 자바 스크립트 XML 약어로서, JSX를 안쓰면 createElement()로 길게 써야되서 불편하니까 JSX를 쓴다 
+    -->
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      //JS의 class를 통해 리엑트 컴포넌트를 생성한다.
+      class Hello extends React.Component {
+        /*
+        컴포넌트에서 render()함수를 통해 출력할 내용을 반환한다.
+        render()함수는 자동으로 호출되며, 화면에 동적인 엘리먼트를 추가해준다.
+        */
+        render() {
+          return <h1>Hello React..!!</h1>;
+        }
+      }
+      //컴포넌트를 지정할 엘리먼트에 출력한다. 컴포넌트는 <컴포넌트명 /> 형식으로 사용한다.
+      ReactDOM.render(<Hello />, document.getElementById("mydiv"));
+    </script>
+  </body>
+</html>
