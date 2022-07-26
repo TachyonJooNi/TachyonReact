@@ -84,7 +84,7 @@ class App extends Component {
             };
             //요청URL 선언
             let url =
-              "http://localhost:8088/Ex07JSONRestAPI/restapi/boardWrite.do";
+              "http://localhost:8082/Ex07JSONRestAPI/restapi/boardWrite.do";
             /*
             서버로 전송시 방식을 post로 변경한다.
             두번째 매개변수는 JSON형식으로 생성한다. 폼값을 저장한 JSON객체를

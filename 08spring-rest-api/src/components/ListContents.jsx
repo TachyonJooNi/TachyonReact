@@ -22,7 +22,7 @@ export default class ListContents extends Component {
     스프링 서버로 요청한 후 콜백데이터가 있으면 then()절에서 콜백받아 사용한다.    
     */
     fetch(
-      "http://localhost:8088/Ex07JSONRestAPI/restapi/boardList.do?nowPage=" +
+      "http://localhost:8082/Ex07JSONRestAPI/restapi/boardList.do?nowPage=" +
         pageNum
     )
       .then(function (result) {
