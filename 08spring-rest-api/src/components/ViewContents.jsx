@@ -12,7 +12,7 @@ export default class ViewContents extends Component {
   componentDidMount() {
     //부모가 전달해준 props를 통해 일련번호를 받아온다.
     fetch(
-      "http://localhost:8088/Ex07JSONRestAPI/restapi/boardView.do?num=" +
+      "http://localhost:8082/Ex07JSONRestAPI/restapi/boardView.do?num=" +
         this.props.num
     )
       .then((result) => {
