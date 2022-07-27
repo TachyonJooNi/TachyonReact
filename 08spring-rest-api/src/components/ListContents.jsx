@@ -10,6 +10,7 @@ export default class ListContents extends Component {
     blists: [],
     pageNum: 1,
   };
+
   /*
   render()함수가 호출된 직후 호출되는 수명주기 함수로써 첫 렌더링에서는
   빈 화면을 먼저 출력하고, 서버와 통신 후 데이터가 있는 화면을 출력한다.  
